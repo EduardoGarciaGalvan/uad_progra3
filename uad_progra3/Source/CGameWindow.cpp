@@ -220,6 +220,7 @@ void CGameWindow::mainLoop(void *appPointer)
 	double current_time, delta_time, one_second = 0;
 	double PCFreq = 0.0;
 	double fps = 0.0;
+	double mspf = 0.0;
 	__int64 CounterStart = 0;
 	int numFramesRendered = 0;
 	float deltaCursorPosX = 0.0f, deltaCursorPosY = 0.0f;
@@ -248,7 +249,6 @@ void CGameWindow::mainLoop(void *appPointer)
 	while (!glfwWindowShouldClose(m_Window))
 	{
 		numFramesRendered++;
-
 		/* Clear color and depth buffer */
 		m_ReferenceRenderer->clearScreen();
 
@@ -301,8 +301,10 @@ void CGameWindow::mainLoop(void *appPointer)
 			if (one_second > 1000.0)
 			{
 				fps = (numFramesRendered / (one_second / 1000.0));
+				mspf = (one_second / numFramesRendered);
 				one_second -= 1000.0;
 				cout << "fps: " << fps << endl;
+				cout << "mspf:" << mspf << endl;
 				numFramesRendered = 0;
 			}
 		}
