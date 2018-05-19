@@ -224,7 +224,9 @@ void CGameWindow::mainLoop(void *appPointer)
 	__int64 CounterStart = 0;
 	int numFramesRendered = 0;
 	float deltaCursorPosX = 0.0f, deltaCursorPosY = 0.0f;
+	int i=0;
 	LARGE_INTEGER li;
+	vector<double> ms;
 
 	if (m_Window == NULL || appPointer == NULL || m_ReferenceRenderer == NULL)
 		return;
@@ -288,6 +290,8 @@ void CGameWindow::mainLoop(void *appPointer)
 
 			//
 			accumulator += delta_time;
+			ms.push_back(delta_time);
+			i++;
 
 			while (accumulator >= dt) {
 				/* Update */
@@ -300,12 +304,19 @@ void CGameWindow::mainLoop(void *appPointer)
 			one_second += delta_time;
 			if (one_second > 1000.0)
 			{
+				for (int j = 0; j < ms.size(); j++)
+				{
+					mspf += ms[j];
+				}
 				fps = (numFramesRendered / (one_second / 1000.0));
-				mspf = (one_second / numFramesRendered);
+				mspf = (mspf / numFramesRendered);
 				one_second -= 1000.0;
 				cout << "fps: " << fps << endl;
 				cout << "mspf:" << mspf << endl;
 				numFramesRendered = 0;
+				mspf -=mspf;
+				i = 0;
+				ms.clear();
 			}
 		}
 
