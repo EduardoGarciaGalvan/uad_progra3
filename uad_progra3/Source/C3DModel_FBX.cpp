@@ -72,70 +72,26 @@ bool C3DModel_FBX::loadFromFile(const char * const filename)
 {
 	bool readFileOk = false;
 
-	// Free any previous resources
 	reset();
-	readObjFile(filename, readFileOk);
+	readFileOk = readObjFile(filename);
 
-	// Display count
 	cout << "Finished reading 3D model" << endl;
 	cout << "Vertices: " << m_numVertices << endl;
 	cout << "Normals: " << m_numNormals << endl;
 	cout << "UVCoords: " << m_numUVCoords << endl;
 	cout << "Faces: " << m_numFaces << endl;
+
 	if (readFileOk)
 	{
-		// Check for MAX number of faces
 		if (m_numVertices >= 65535 || m_numNormals >= 65535 || m_numUVCoords >= 65535)
 		{
 			cout << "Error: object cannot have more than 65535 vertices" << endl;
 			cout << "Object attempted to load has: " << m_numVertices << " vertices" << endl;
 			return false;
 		}
-
-		if (m_numNormals == 0)
-		{
-			m_modelHasNormals = false;
-			m_numNormals = m_numVertices;
-		}
-		else
-		{
-			m_modelHasNormals = true;
-		}
-
-		if (m_numUVCoords == 0)
-		{
-			m_numUVCoords = m_numVertices;
-			m_modelHasUVs = false;
-		}
-		else
-		{
-			m_modelHasUVs = true;
-		}
-		
-		m_verticesRaw = new float[m_numVertices * 3];
-		m_normalsRaw = new float[m_numNormals * 3];
-		m_uvCoordsRaw = new float[m_numUVCoords * 2];
-		m_vertexIndices = new unsigned short[m_numFaces * 3];
-		m_normalIndices = new unsigned short[m_numFaces * 3];
-		m_UVindices = new unsigned short[m_numFaces * 3];
-		
-		memset(m_vertexIndices, 0, sizeof(unsigned short) * m_numFaces * 3);
-		memset(m_normalIndices, 0, sizeof(unsigned short) * m_numFaces * 3);
-		memset(m_UVindices, 0, sizeof(unsigned short) * m_numFaces * 3);
-		memset(m_verticesRaw, 0, sizeof(float) * m_numVertices * 3);
-		memset(m_normalsRaw, 0, sizeof(float) * m_numNormals * 3);
-		memset(m_uvCoordsRaw, 0, sizeof(float) * m_numUVCoords * 2);
-
-		readFileOk = readObjFile(filename, false);
-
 		if (readFileOk)
 		{
 			m_Initialized = true;
-
-			if (!m_modelHasNormals)
-			{
-				computeFaceNormals();
-			}
 		}
 	}
 	else
@@ -146,7 +102,7 @@ bool C3DModel_FBX::loadFromFile(const char * const filename)
 	return readFileOk;
 }
 
-bool C3DModel_FBX::readObjFile(const char * const filename, bool countOnly)
+bool C3DModel_FBX::readObjFile(const char * const filename)
 {
 	ifstream infile;
 	string lineBuffer;
@@ -206,20 +162,25 @@ bool C3DModel_FBX::readObjFile(const char * const filename, bool countOnly)
 			int j;
 			for (int i = 0; i < (m_numIVertices - 1); i++)
 			{
-				int j = i + m_indicesAgregados;
+				j = i + m_indicesAgregados;
 				getline(lineaux4, token, ',');
 				m_IVertices.push_back(stof(token));
 				if (m_IVertices[j] >= 0) m_signosPositivos++;
 				else if (m_signosPositivos == 3)
 				{
-					m_IVertices[j + 2] = m_IVertices[j - 3];
-					m_IVertices[j + 1] = (-m_IVertices[i]) - 1;
+					m_IVertices.push_back((-m_IVertices[j]) - 1);
+					m_IVertices.push_back(m_IVertices[j - 3]);
 					m_IVertices[j] = m_IVertices[j - 1];
 					m_signosPositivos = 0;
 					m_indicesAgregados += 2;
+					m_numFaces++;
 				}
-				else if (m_signosPositivos == 2)m_signosPositivos = 0;
-				if (m_signosPositivos > 3 || m_signosPositivos < 2)
+				else if (m_signosPositivos == 2)
+				{
+					m_signosPositivos = 0;
+					m_numFaces++;
+				}
+				if (m_signosPositivos > 3)
 				{
 					cout << "Lo siento, no se aceptan N-gons" << endl;
 					return false;
@@ -228,11 +189,11 @@ bool C3DModel_FBX::readObjFile(const char * const filename, bool countOnly)
 			getline(lineaux4, token, '\n');
 			if (m_signosPositivos == 3)
 			{
-				m_IVertices[j + 2] = m_IVertices[j - 3];
-				m_IVertices[j + 1] = (-m_IVertices[j]) - 1;
+				m_IVertices.push_back((-m_IVertices[j]) - 1);
+				m_IVertices.push_back(m_IVertices[j - 3]);
 				m_IVertices[j] = m_IVertices[j - 1];
 			}
-			if (m_signosPositivos > 3 || m_signosPositivos < 2)
+			if (m_signosPositivos > 3)
 			{
 				cout << "Lo siento, no se aceptan N-gons" << endl;
 				return false;
@@ -281,11 +242,39 @@ bool C3DModel_FBX::readObjFile(const char * const filename, bool countOnly)
 		}
 		else if (lineBuffer.find(delimiterToken6) != string::npos)
 		{
-
+			istringstream lineaux7(lineBuffer);
+			getline(lineaux7, token, '*');
+			getline(lineaux7, token, ' ');
+			m_numIUVCoords = stof(token);
+			m_UVindices = new unsigned short[m_numIUVCoords];
+			getline(infile, lineBuffer);
+			istringstream lineaux8(lineBuffer);
+			getline(lineaux8, token, ' ');
+			for (int i = 0; i < m_numIUVCoords - 1; i++)
+			{
+				getline(lineaux8, token, ',');
+				m_UVindices[i] = stof(token);
+			}
+			getline(lineaux8, token, '\n');
+			m_UVindices[m_numIUVCoords - 1] = stof(token);
 		}
 		else if (lineBuffer.find(delimiterToken5)!= string::npos)
 		{
-
+			istringstream lineaux9(lineBuffer);
+			getline(lineaux9, token, '*');
+			getline(lineaux9, token, ' ');
+			m_numUVCoords = stof(token);
+			m_uvCoordsRaw = new float[m_numUVCoords];
+			getline(infile, lineBuffer);
+			istringstream lineaux10(lineBuffer);
+			getline(lineaux10, token, ' ');
+			for (int i = 0; i < m_numUVCoords - 1; i++)
+			{
+				getline(lineaux10, token, ',');
+				m_uvCoordsRaw[i] = stof(token);
+			}
+			getline(lineaux10, token, '\n');
+			m_uvCoordsRaw[m_numUVCoords - 1] = stof(token);
 		}
 	}
 	infile.close();
