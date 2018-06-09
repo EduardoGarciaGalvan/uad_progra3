@@ -12,6 +12,7 @@ using namespace std;
 #include "../Include/C3DModel_Obj.h"
 #include "../Include/C3DModel_STL.h"
 #include "../Include/C3DModel_3DS.h"
+#include "../Include/C3DModel_FBX.h"
 
 /* */
 C3DModel::C3DModel()
@@ -147,7 +148,9 @@ C3DModel* C3DModel::load(const char * const filename)
 		}
 		else if (!fileExtension.compare("fbx"))
 		{
-			cout << "FBX file format reading not implemented" << endl;
+			cout << "Loading FBX model..." << endl;
+			newModel = new C3DModel_FBX();
+			newModel->loadFromFile(filename);
 		}
 	}
 	else
