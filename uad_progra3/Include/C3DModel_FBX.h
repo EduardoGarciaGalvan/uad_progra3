@@ -6,7 +6,7 @@ class C3DModel_FBX :public C3DModel
 {
 private:
 	int m_numVertices, m_numNormals, m_numUVCoords, m_numFaces;
-	int m_numIVertices, m_numINormals, m_numIUVCoords, m_numIFaces;
+	int m_numIVertices, m_numIUVCoords;
 	
 	bool readObjFile(const char * const filename);
 protected:
