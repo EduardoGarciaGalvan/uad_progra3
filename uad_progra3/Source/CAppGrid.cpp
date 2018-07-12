@@ -20,7 +20,7 @@ void CAppGrid::initialize()
 
 }
 
-void CAppGrid::run()
+/*void CAppGrid::run()
 {
 	initialize();
 
@@ -273,7 +273,7 @@ void CAppGrid::render()
 			*/
 
 			// No model loaded, show test cube
-			getOpenGLRenderer()->renderTestObject(&modelMatrix);
+			/*getOpenGLRenderer()->renderTestObject(&modelMatrix);
 			getOpenGLRenderer()->renderMCCube(m_mcCubeTextureID, &modelMatrix2);
 		}
 	}
@@ -302,4 +302,4 @@ void CAppGrid::executeMenuAction()
 			break;
 		}
 	}
-}
+}*/

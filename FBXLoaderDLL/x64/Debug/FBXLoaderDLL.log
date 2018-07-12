@@ -1,0 +1,11 @@
+﻿  FBXLoaderDLL.cpp
+c:\users\eduardo\progra3\uad_progra3\fbxloaderdll\fbxloaderdll.cpp(138): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\eduardo\progra3\uad_progra3\fbxloaderdll\fbxloaderdll.cpp(183): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\eduardo\progra3\uad_progra3\fbxloaderdll\fbxloaderdll.cpp(195): warning C4244: 'argument': conversion from 'float' to 'long', possible loss of data
+c:\users\eduardo\progra3\uad_progra3\fbxloaderdll\fbxloaderdll.cpp(230): warning C4244: 'argument': conversion from 'float' to 'long', possible loss of data
+c:\users\eduardo\progra3\uad_progra3\fbxloaderdll\fbxloaderdll.cpp(251): warning C4244: '=': conversion from 'long' to 'unsigned short', possible loss of data
+c:\users\eduardo\progra3\uad_progra3\fbxloaderdll\fbxloaderdll.cpp(260): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\eduardo\progra3\uad_progra3\fbxloaderdll\fbxloaderdll.cpp(300): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\eduardo\progra3\uad_progra3\fbxloaderdll\fbxloaderdll.cpp(310): warning C4244: '=': conversion from 'float' to 'unsigned short', possible loss of data
+c:\users\eduardo\progra3\uad_progra3\fbxloaderdll\fbxloaderdll.cpp(325): warning C4244: '=': conversion from 'float' to 'unsigned short', possible loss of data
+c:\users\eduardo\progra3\uad_progra3\fbxloaderdll\fbxloaderdll.cpp(332): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
