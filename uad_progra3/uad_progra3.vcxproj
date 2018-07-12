@@ -167,9 +167,11 @@
   <ItemGroup>
     <ClInclude Include="Include\C3DModel.h" />
     <ClInclude Include="Include\C3DModel_3DS.h" />
+    <ClInclude Include="Include\C3DModel_FBX.h" />
     <ClInclude Include="Include\C3DModel_Obj.h" />
     <ClInclude Include="Include\C3DModel_STL.h" />
     <ClInclude Include="Include\CApp.h" />
+    <ClInclude Include="Include\CAppGrid.h" />
     <ClInclude Include="Include\CAppParcial2.h" />
     <ClInclude Include="Include\CBinaryTree.h" />
     <ClInclude Include="Include\CBinaryTreeNode.h" />
@@ -184,11 +186,13 @@
     <ClInclude Include="Include\CVector3.h" />
     <ClInclude Include="Include\CWideStringHelper.h" />
     <ClInclude Include="Include\Globals.h" />
+    <ClInclude Include="Include\HexGridCell.h" />
     <ClInclude Include="Include\LoadShaders.h" />
     <ClInclude Include="Include\LoadTGA.h" />
     <ClInclude Include="Include\MathHelper.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dependencies\GLAD\glad-4.3-core\src\glad.c">
@@ -199,9 +203,11 @@
     </ClCompile>
     <ClCompile Include="Source\C3DModel.cpp" />
     <ClCompile Include="Source\C3DModel_3DS.cpp" />
+    <ClCompile Include="Source\C3DModel_FBX.cpp" />
     <ClCompile Include="Source\C3DModel_Obj.cpp" />
     <ClCompile Include="Source\C3DModel_STL.cpp" />
     <ClCompile Include="Source\CApp.cpp" />
+    <ClCompile Include="Source\CAppGrid.cpp" />
     <ClCompile Include="Source\CAppParcial2.cpp" />
     <ClCompile Include="Source\CCircularDoubleLinkedList.cpp" />
     <ClCompile Include="Source\CCircularDoubleLinkedListNode.cpp" />
@@ -211,10 +217,12 @@
     <ClCompile Include="Source\COpenGLRenderer.cpp" />
     <ClCompile Include="Source\COpenGLShaderProgram.cpp" />
     <ClCompile Include="Source\CVector3.cpp" />
+    <ClCompile Include="Source\HexGridCell.cpp" />
     <ClCompile Include="Source\LoadShaders.cpp" />
     <ClCompile Include="Source\LoadTGA.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="uad_progra3.cpp" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
