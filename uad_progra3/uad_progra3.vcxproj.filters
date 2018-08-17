@@ -96,10 +96,19 @@
     <ClInclude Include="Include\HexGridCell.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="World.h">
+    <ClInclude Include="Include\CAppGrid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Include\CAppGrid.h">
+    <ClInclude Include="Include\Quadtree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\QuadTreeNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\World.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\hexgrid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -167,10 +176,19 @@
     <ClCompile Include="Source\HexGridCell.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="World.cpp">
+    <ClCompile Include="Source\CAppGrid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\CAppGrid.cpp">
+    <ClCompile Include="Source\Quadtree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\QuadTreeNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hexgrid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

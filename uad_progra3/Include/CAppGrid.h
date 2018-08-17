@@ -7,13 +7,16 @@
 #include "Globals.h"
 #include "CApp.h"
 #include "CVector3.h"
+#include "World.h"
 
-// Class that inherits from Base class CApp
-// Base class CApp has members for: CGameWindow, CGameMenu, and COpenGLRenderer, which we can access through the public/protected methods
 class CAppGrid : public CApp
 {
 private:
-
+	World * world;
+	int DimensionX, DimensionY;
+	bool isPointyHex;
+	float Size;
+	unsigned int indiceVertex[];
 
 protected:
 	// Method to initialize the menu
@@ -26,8 +29,6 @@ public:
 	CAppGrid(int window_width, int window_height);
 	~CAppGrid();
 
-	// Inherited methods from CApp
-	// ---------------------------
 
 	// Method to initialize any objects for this class
 	void initialize();
