@@ -11,6 +11,7 @@ using namespace std;
 #include "../Include/C3DModel.h"
 #include "../Include/C3DModel_Obj.h"
 #include "../Include/C3DModel_STL.h"
+#include "../Include/C3DModel_X.h"
 #include "../Include/C3DModel_3DS.h"
 
 /* */
@@ -143,6 +144,12 @@ C3DModel* C3DModel::load(const char * const filename)
 		{
 			cout << "Loading STL model..." << endl;
 			newModel = new C3DModel_STL();
+			newModel->loadFromFile(filename);
+		}
+		else if (!fileExtension.compare("x"))
+		{
+			cout << "Loading X model..." << endl;
+			newModel = new C3DModel_X();
 			newModel->loadFromFile(filename);
 		}
 		else if (!fileExtension.compare("fbx"))

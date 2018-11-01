@@ -165,12 +165,16 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Include\ArbolBinario.h" />
     <ClInclude Include="Include\C3DModel.h" />
     <ClInclude Include="Include\C3DModel_3DS.h" />
     <ClInclude Include="Include\C3DModel_Obj.h" />
     <ClInclude Include="Include\C3DModel_STL.h" />
+    <ClInclude Include="Include\C3DModel_X.h" />
     <ClInclude Include="Include\CApp.h" />
     <ClInclude Include="Include\CAppParcial2.h" />
+    <ClInclude Include="Include\CAPP_Model.h" />
+    <ClInclude Include="Include\CAPP_Sphere.h" />
     <ClInclude Include="Include\CBinaryTree.h" />
     <ClInclude Include="Include\CBinaryTreeNode.h" />
     <ClInclude Include="Include\CCircularDoubleLinkedList.h" />
@@ -187,6 +191,7 @@
     <ClInclude Include="Include\LoadShaders.h" />
     <ClInclude Include="Include\LoadTGA.h" />
     <ClInclude Include="Include\MathHelper.h" />
+    <ClInclude Include="Include\NodoArbolBinario.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -197,12 +202,16 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Source\ArbolBinario.cpp" />
     <ClCompile Include="Source\C3DModel.cpp" />
     <ClCompile Include="Source\C3DModel_3DS.cpp" />
     <ClCompile Include="Source\C3DModel_Obj.cpp" />
     <ClCompile Include="Source\C3DModel_STL.cpp" />
+    <ClCompile Include="Source\C3DModel_X.cpp" />
     <ClCompile Include="Source\CApp.cpp" />
     <ClCompile Include="Source\CAppParcial2.cpp" />
+    <ClCompile Include="Source\CAPP_Model.cpp" />
+    <ClCompile Include="Source\CAPP_Sphere.cpp" />
     <ClCompile Include="Source\CCircularDoubleLinkedList.cpp" />
     <ClCompile Include="Source\CCircularDoubleLinkedListNode.cpp" />
     <ClCompile Include="Source\CGameMenu.cpp" />
@@ -213,6 +222,7 @@
     <ClCompile Include="Source\CVector3.cpp" />
     <ClCompile Include="Source\LoadShaders.cpp" />
     <ClCompile Include="Source\LoadTGA.cpp" />
+    <ClCompile Include="Source\NodoArbolBinario.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="uad_progra3.cpp" />
   </ItemGroup>
