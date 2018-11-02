@@ -157,7 +157,7 @@ bool C3DModel_X::loadFromFile(const char * const filename)
 										getline(infile, token, ';');
 										cout << "UV del modelo: " << token << endl;
 										m_numUVCoords = atoi(token.c_str());
-										m_uvCoordsRaw = new float[m_numUVCoords * 3];
+										m_uvCoordsRaw = new float[m_numUVCoords * 2];
 										for (int i = 0; i < m_numUVCoords; i++)
 										{
 											m_currentUV += m_currentUV != 0 ? 1 : 0;
@@ -165,13 +165,13 @@ bool C3DModel_X::loadFromFile(const char * const filename)
 											istringstream lineBuffer2(lineBuffer);
 											getline(lineBuffer2, token, ';');
 											CoordenadaXYZ = atoi(token.c_str());
-											m_uvCoordsRaw[(m_currentUV * 3)] = CoordenadaXYZ;
+											m_uvCoordsRaw[(m_currentUV * 2)] = CoordenadaXYZ;
 											getline(lineBuffer2, token, ';');
 											CoordenadaXYZ = atoi(token.c_str());
-											m_uvCoordsRaw[(m_currentUV * 3) + 1] = CoordenadaXYZ;
+											m_uvCoordsRaw[(m_currentUV * 2) + 1] = CoordenadaXYZ;
 											getline(lineBuffer2, token, ';');
 											CoordenadaXYZ = atoi(token.c_str());
-											m_uvCoordsRaw[(m_currentUV * 3) + 2] = CoordenadaXYZ;
+											m_uvCoordsRaw[(m_currentUV * 2) + 2] = CoordenadaXYZ;
 											m_currentUV++;
 										}
 										getline(infile, token, ';');

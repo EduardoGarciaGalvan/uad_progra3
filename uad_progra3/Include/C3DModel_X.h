@@ -29,5 +29,4 @@ private:
 protected:
 	void reset();
 	bool loadFromFile(const char * const filename);
-
 };
