@@ -9,7 +9,6 @@ using namespace std;
 #include "Include/CGameWindow.h"
 #include "Include/CApp.h"
 #include "Include/CAppParcial2.h"
-#include "Include/CAppHexGrid.h"
 #include "Include/CAppEmpty.h"
 
 int main()
