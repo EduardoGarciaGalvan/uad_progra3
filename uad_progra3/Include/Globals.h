@@ -35,7 +35,7 @@
 #define MENU_TEXTURE_FILE_EXAMEN_FINAL          "TEXTURES\\MenuExamenFinal.tga"
 #define MC_CUBE_TEXTURE                         "TEXTURES\\mc_grass_dirt_cube_512x384.tga"
 
-// 
+// CAMERA
 #define DEFAULT_ROTATION_SPEED                  90.0f
 #define DEFAULT_CAMERA_MOVE_SPEED               0.015f
 

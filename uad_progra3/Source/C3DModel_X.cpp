@@ -13,9 +13,9 @@ m_currentVertexFace(0),
 m_currentNormalFace(0),
 m_currentUVFace(0),
 m_Contador(0),
-cuerpo(false),
-normals(false),
-UV(false)
+m_cuerpo(false),
+m_normals(false),
+m_UV(false)
 {
 	cout << "Constructor: C3DModel_X()" << endl;
 }
@@ -37,9 +37,9 @@ void C3DModel_X::reset()
 	m_currentNormalFace = 0;
 	m_currentUVFace = 0;
 	m_Contador = 0;
-	cuerpo = false;
-	normals = false;
-	UV = false;
+	m_cuerpo = false;
+	m_normals = false;
+	m_UV = false;
 }
 
 bool C3DModel_X::loadFromFile(const char * const filename)
@@ -59,7 +59,7 @@ bool C3DModel_X::loadFromFile(const char * const filename)
 		getline(infile, lineBuffer);
 		if (lineBuffer.find(Cuerpo) != string::npos)
 		{
-			if (cuerpo)
+			if (m_cuerpo)
 			{
 				getline(infile, token, ';');
 				cout << "Vertices del modelo: " << token << endl;
@@ -106,7 +106,7 @@ bool C3DModel_X::loadFromFile(const char * const filename)
 				{
 					if (lineBuffer.find(Normals) != string::npos)
 					{
-						if (normals)
+						if (m_normals)
 						{
 							getline(infile, token, ';');
 							cout << "Normals del modelo: " << token << endl;
@@ -152,7 +152,7 @@ bool C3DModel_X::loadFromFile(const char * const filename)
 							{
 								if (lineBuffer.find(UV) != string::npos)
 								{
-									if (UV)
+									if (m_UV)
 									{
 										getline(infile, token, ';');
 										cout << "UV del modelo: " << token << endl;
@@ -191,7 +191,7 @@ bool C3DModel_X::loadFromFile(const char * const filename)
 									}
 									else
 									{
-										normals = true;
+										m_UV = true;
 									}
 									getline(infile, lineBuffer);
 								}
@@ -200,7 +200,7 @@ bool C3DModel_X::loadFromFile(const char * const filename)
 						}
 						else
 						{
-							normals = true;
+							m_normals = true;
 						}
 						getline(infile, lineBuffer);
 
@@ -209,7 +209,7 @@ bool C3DModel_X::loadFromFile(const char * const filename)
 				loadFromFile = true;
 			}
 			else {
-				cuerpo = true;
+			m_cuerpo = true;
 			}
 
 		}
@@ -219,3 +219,7 @@ bool C3DModel_X::loadFromFile(const char * const filename)
 	return loadFromFile;
 }
 
+void C3DModel_X::render()
+{
+
+}

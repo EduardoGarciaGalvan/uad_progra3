@@ -25,8 +25,9 @@ private:
 	char *Cuerpo = "Mesh",
 		*Normals = "MeshNormals",
 		*UV = "MeshTextureCoords";
-	bool cuerpo, normals, UV;
+	bool m_cuerpo, m_normals, m_UV;
 protected:
 	void reset();
 	bool loadFromFile(const char * const filename);
+	void render();
 };

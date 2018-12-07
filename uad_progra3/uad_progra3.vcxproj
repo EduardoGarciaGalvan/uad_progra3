@@ -165,13 +165,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Include\C3DMesh.h" />
-    <ClInclude Include="Include\C3DMeshGroup.h" />
     <ClInclude Include="Include\C3DModel.h" />
     <ClInclude Include="Include\C3DModel_3DS.h" />
     <ClInclude Include="Include\C3DModel_Obj.h" />
     <ClInclude Include="Include\C3DModel_STL.h" />
-    <ClInclude Include="Include\C3DModel_STLAscii.h" />
     <ClInclude Include="Include\C3DModel_X.h" />
     <ClInclude Include="Include\CApp.h" />
     <ClInclude Include="Include\CAppEmpty.h" />
@@ -186,12 +183,15 @@
     <ClInclude Include="Include\CGameMenu.h" />
     <ClInclude Include="Include\CGameMenuItem.h" />
     <ClInclude Include="Include\CGameWindow.h" />
-    <ClInclude Include="Include\CMaterial.h" />
     <ClInclude Include="Include\COpenGLRenderer.h" />
     <ClInclude Include="Include\COpenGLShaderProgram.h" />
+    <ClInclude Include="Include\CQuadTree.h" />
+    <ClInclude Include="Include\CQuadTreeNode.h" />
     <ClInclude Include="Include\CVector3.h" />
     <ClInclude Include="Include\CWideStringHelper.h" />
     <ClInclude Include="Include\Globals.h" />
+    <ClInclude Include="Include\HexGrid.h" />
+    <ClInclude Include="Include\HexGridCell.h" />
     <ClInclude Include="Include\LoadShaders.h" />
     <ClInclude Include="Include\LoadTGA.h" />
     <ClInclude Include="Include\MathHelper.h" />
@@ -209,7 +209,6 @@
     <ClCompile Include="Source\C3DModel_3DS.cpp" />
     <ClCompile Include="Source\C3DModel_Obj.cpp" />
     <ClCompile Include="Source\C3DModel_STL.cpp" />
-    <ClCompile Include="Source\C3DModel_STLAscii.cpp" />
     <ClCompile Include="Source\C3DModel_X.cpp" />
     <ClCompile Include="Source\CApp.cpp" />
     <ClCompile Include="Source\CAppEmpty.cpp" />
@@ -223,7 +222,11 @@
     <ClCompile Include="Source\CGameWindow.cpp" />
     <ClCompile Include="Source\COpenGLRenderer.cpp" />
     <ClCompile Include="Source\COpenGLShaderProgram.cpp" />
+    <ClCompile Include="Source\CQuadTree.cpp" />
+    <ClCompile Include="Source\CQuadTreeNode.cpp" />
     <ClCompile Include="Source\CVector3.cpp" />
+    <ClCompile Include="Source\HexGrid.cpp" />
+    <ClCompile Include="Source\HexGridCell.cpp" />
     <ClCompile Include="Source\LoadShaders.cpp" />
     <ClCompile Include="Source\LoadTGA.cpp" />
     <ClCompile Include="stdafx.cpp" />
